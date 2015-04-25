@@ -1,0 +1,45 @@
+*****************STUDY DESIGN****************************************
+
+Description about how data was collected to generate the  tidy data step by step
+1. Merges the training and the test sets to create one data set.
+a)studied the datasets in X*,Y* and subject* text files
+b)read the above data sets for both Test and Train datasets
+c)merged the data sets for both Test and Train based on  X,Y and subject.
+
+2. Extracts only the measurements on the mean and standard deviation for each measurement.
+a) Here the aim was to just extract variables which have mean or std deviation values contained. Extracted using the grep() function.
+b) merged X data set with mean and std values.
+
+4. Appropriately labels the data set with descriptive variable names.
+a) Variables used for Test and Train data are contained in features.txt. Read the variables and assigned them to the data collected for X for both Test and Train.
+
+3. Uses descriptive activity names to name the activities in the data set
+a) merged the data of Z,Y,X ie subject,label other X variables with mean and std data.
+b) read the data from activity_labels.txt
+c) used the number of the label/activity in above merged data and fetched the respective name from activity_labels.txt after reading.
+
+5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+a) Melted merged data into long format with "subject" and "label" as IDs in a below format:
+  subject  label          variable     value
+1       1 LAYING tBodyAcc-mean()-X 0.4034743
+2       1 LAYING tBodyAcc-mean()-X 0.2783732
+b)Then using the mean as function, in "dcast" function from reshape2 library, transformed the data to wide format per subject and per activity basis.
+c) Arranged the data
+d)Renamed the variables with average values as ave.<old_variable_name> format.
+e) Generated the tidy data set in a text file "CourseProjectTidyData.txt"  
+
+*****************CODE BOOK****************************************
+All the variables in tidy dataset "CourseProjectTidyData.txt" except subject and label are the average values of the variables of the merged data. So,
+the average value of tBodyAcc-mean()-X -> ave.tBodyAcc-mean()-X
+Since tidy data contains only the average values all the variables are mapped as :
+
+Old_Variable_Name	New_Variable_Name
+"tBodyAcc-mean()-X"     "ave.tBodyAcc-mean()-X"             
+"tBodyAcc-mean()-Y"     "ave.tBodyAcc-mean()-Y"           
+"tBodyAcc-mean()-Z" 	"ave.tBodyAcc-mean()-Z"
+"tBodyAcc-std()-X"  	"ave.tBodyAcc-std()-X"                  
+"tBodyAcc-std()-Y"	"ave.tBodyAcc-std()-Y"
+"tBodyAcc-std()-Z"  	"ave.tBodyAcc-std()-Z"                  
+"tBodyAcc-mad()-X"	"ave.tBodyAcc-mad()-X"
+"tBodyAcc-mad()-Y"	"ave.tBodyAcc-mad()-Y"                    
+"tBodyAcc-mad()-Z"	"ave.tBodyAcc-mad()-Z"
