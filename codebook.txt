@@ -8,13 +8,13 @@ c)merged the data sets for both Test and Train based on  X,Y and subject.
 
 2. Extracts only the measurements on the mean and standard deviation for each measurement.
 a) Here the aim was to just extract variables which have mean or std deviation values contained. Extracted using the grep() function.
-b) merged X data set with mean and std values.
+b) Combined only the mean ans Std variables only of merged X dataset.
 
 4. Appropriately labels the data set with descriptive variable names.
 a) Variables used for Test and Train data are contained in features.txt. Read the variables and assigned them to the data collected for X for both Test and Train.
 
 3. Uses descriptive activity names to name the activities in the data set
-a) merged the data of Z,Y,X ie subject,label other X variables with mean and std data.
+a) merged the data of Z,Y,X(only Mean and Std combined Data) ie subject,label and X variables with mean and std data respectively.
 b) read the data from activity_labels.txt
 c) used the number of the label/activity in above merged data and fetched the respective name from activity_labels.txt after reading.
 
@@ -31,15 +31,13 @@ e) Generated the tidy data set in a text file "CourseProjectTidyData.txt"
 *****************CODE BOOK****************************************
 All the variables in tidy dataset "CourseProjectTidyData.txt" except subject and label are the average values of the variables of the merged data. So,
 the average value of tBodyAcc-mean()-X -> ave.tBodyAcc-mean()-X
-Since tidy data contains only the average values all the variables are mapped as :
+Since tidy data(180x68) contains only the average values all the variables(per subject per activity) are mapped as :
 
-Old_Variable_Name	New_Variable_Name
+Old_Variable_Name	        New_Variable_Name
 "tBodyAcc-mean()-X"     "ave.tBodyAcc-mean()-X"             
 "tBodyAcc-mean()-Y"     "ave.tBodyAcc-mean()-Y"           
 "tBodyAcc-mean()-Z" 	"ave.tBodyAcc-mean()-Z"
 "tBodyAcc-std()-X"  	"ave.tBodyAcc-std()-X"                  
 "tBodyAcc-std()-Y"	"ave.tBodyAcc-std()-Y"
-"tBodyAcc-std()-Z"  	"ave.tBodyAcc-std()-Z"                  
-"tBodyAcc-mad()-X"	"ave.tBodyAcc-mad()-X"
-"tBodyAcc-mad()-Y"	"ave.tBodyAcc-mad()-Y"                    
-"tBodyAcc-mad()-Z"	"ave.tBodyAcc-mad()-Z"
+"tBodyAcc-std()-Z"  	"ave.tBodyAcc-std()-Z"  
+..........total 66 variables for average of mean and Std variables and 2 variables as "subject" and "label" .
