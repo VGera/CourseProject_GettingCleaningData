@@ -27,7 +27,7 @@ stdVal<- mergeDataX[,grep("std()",names(mergeDataX),value=TRUE,fixed=TRUE)]
 meanStdData<-cbind(meanVal,stdVal)
 
 #merge the data of X with Label(1. walking 2. downstairs etc.) and subject(person)
-mergeDataLabelSub<-cbind(mergeDataSub,mergeDataY,mergeDataX)
+mergeDataLabelSub<-cbind(mergeDataSub,mergeDataY,meanStdData)
 #change the name of Y and Z
 names(mergeDataLabelSub)[1:2]<-c("subject","label")
 
@@ -71,6 +71,5 @@ setnames(x = averageData,
 ### Comments Developer####
 #find if it has same dimensions(after reading back the data using read.table 
 #from ./CourseProjectTidyData.txt).it shows 1 extra row as it counts the 
-#column names too. #dim(averageData)= 180x479 and 
+#column names too. #dim(averageData)= 180x68 and 
 #dim(tidyData<-read.table("./CourseProjectTidyData.txt"))
-
